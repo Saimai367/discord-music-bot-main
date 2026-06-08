@@ -1,0 +1,17 @@
+services:
+  - type: worker          # worker = background process (ไม่ใช่ web server)
+    name: discord-music-bot
+    env: node
+    region: singapore     # ใกล้ไทยที่สุด
+    plan: free            # เปลี่ยนเป็น starter หรือ standard สำหรับ production
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: TOKEN
+        sync: false       # กรอกผ่าน Render Dashboard
+      - key: CLIENT_ID
+        sync: false
+      - key: GUILD_ID
+        sync: false
+      - key: NODE_ENV
+        value: production
